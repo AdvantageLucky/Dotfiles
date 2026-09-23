@@ -6,9 +6,12 @@ text-color=#E8D5B0
 border-color=#E08A3Ce6
 progress-color=over #E08A3C66
 width=350
-height=250
+height=90
+padding=9
+margin=10
 border-size=1
 border-radius=6
+max-visible=4
 
 default-timeout=3000
 ignore-timeout=1
