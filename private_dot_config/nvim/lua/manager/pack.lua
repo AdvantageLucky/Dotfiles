@@ -8,7 +8,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/shaunsingh/nord.nvim" },
 	{ src = "https://github.com/savq/melange-nvim" },
-	{ src = "https://github.com/echasnovski/mini.icons" },
+	{ src = "https://github.com/nvim-mini/mini.nvim" },
 
 	-- @LSP
 	-- completions LuaSnip
@@ -31,7 +31,6 @@ vim.pack.add({
 
 	-- @UTILS
 	-- Misc
-	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/catgoose/nvim-colorizer.lua" },
 	{ src = "https://github.com/vyfor/cord.nvim" },
 
@@ -64,6 +63,7 @@ require("plugins.ui.gitsigns")
 require("plugins.ui.lualine")
 require("plugins.ui.icons")
 require("plugins.ui.melange")
+require("plugins.ui.animations")
 
 -- @LSP
 require("plugins.lsp.engine.mason")
@@ -75,6 +75,7 @@ require("plugins.lsp.completions.nvim_cmp")
 require("plugins.utils.misc.autopairs")
 require("plugins.utils.misc.colorizer")
 require("plugins.utils.misc.discord")
+require("plugins.utils.misc.jump")
 
 -- Snacks
 require("plugins.utils.snacks.snacks")

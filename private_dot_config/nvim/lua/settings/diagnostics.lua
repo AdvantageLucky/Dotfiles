@@ -1,10 +1,20 @@
 -- @Langs: @Diagnostics
+local severity = vim.diagnostic.severity
 
 vim.diagnostic.config({
 	signs = {
-		numhl = { "DiagnosticSignError", "DiagnosticSignWarn", "DiagnosticSignInfo", "DiagnosticSignHint" }, -- line
-		text = { " ", " ", "󰋼 ", "󰌶" }, -- sign column
-		texthl = { "DiagnosticSignError", "DiagnosticSignWarn", "DiagnosticSignInfo", "DiagnosticSignHint" }, -- text highlighting
+		text = {
+			[severity.ERROR] = "󰅚",
+			[severity.WARN] = "󰀪",
+			[severity.INFO] = "󰋼",
+			[severity.HINT] = "󰌶",
+		},
+		numhl = {
+			[severity.ERROR] = "DiagnosticSignError",
+			[severity.WARN] = "DiagnosticSignWarn",
+			[severity.INFO] = "DiagnosticSignInfo",
+			[severity.HINT] = "DiagnosticSignHint",
+		},
 	},
 
 	float = {
