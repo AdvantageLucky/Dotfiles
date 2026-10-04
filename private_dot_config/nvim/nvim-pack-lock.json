@@ -69,6 +69,9 @@
       "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
       "src": "https://github.com/hrsh7th/nvim-cmp"
     },
+    "nvim-hlslens": {
+      "rev": "be2d7b2be01860b5445a007ff2bc72b29896db6b",
+      "src": "https://github.com/kevinhwang91/nvim-hlslens"
     },
     "nvim-lspconfig": {
       "rev": "21db1fd40cbcbf1524ae154ab8f394fdf085749a",
@@ -109,6 +112,10 @@
     "telescope.nvim": {
       "rev": "506338434fec5ad19cb1f8d45bf92d66c4917393",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "tiny-code-action.nvim": {
+      "rev": "91a9c32228e9a7761d241023d9ebb9d11d8fb10d",
+      "src": "https://github.com/rachartier/tiny-code-action.nvim"
     }
   }
 }

@@ -24,6 +24,9 @@ vim.pack.add({
 	-- conform formatter
 	{ src = "https://github.com/stevearc/conform.nvim" },
 
+	-- code actions previews
+	{ src = "https://github.com/rachartier/tiny-code-action.nvim" },
+
 	-- snippets
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
 	{ src = "https://github.com/L3MON4D3/LuaSnip", version = "v2.5.0" },
@@ -52,6 +55,9 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
 
+	-- Hlslens
+	{ src = "https://github.com/kevinhwang91/nvim-hlslens" },
+
 	-- Notes
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 	{ src = "https://github.com/f3fora/cmp-spell" },
@@ -69,6 +75,7 @@ require("plugins.ui.melange")
 require("plugins.lsp.engine.mason")
 require("plugins.lsp.engine.conform")
 require("plugins.lsp.completions.nvim_cmp")
+require("plugins.lsp.actions.code_actions_preview")
 
 -- @UTILS
 -- etc
@@ -80,6 +87,7 @@ require("plugins.utils.parser.treesitter")
 -- Search
 require("plugins.utils.search.oil")
 require("plugins.utils.search.telescope")
+require("plugins.utils.search.hlsearch")
 
 -- Notes
 require("plugins.utils.notes.render_markdown")
