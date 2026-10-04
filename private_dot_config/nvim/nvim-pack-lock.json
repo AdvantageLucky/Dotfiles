@@ -57,10 +57,6 @@
       "rev": "ce42f6b629beeaa00591ba73a77d3eeac4cf28ce",
       "src": "https://github.com/savq/melange-nvim"
     },
-    "mini.icons": {
-      "rev": "bac6317300e205335df425296570d84322730067",
-      "src": "https://github.com/echasnovski/mini.icons"
-    },
     "mini.nvim": {
       "rev": "ba4362b1728c60f4002e924ebddbb25e21d1b2cf",
       "src": "https://github.com/nvim-mini/mini.nvim"
@@ -69,17 +65,10 @@
       "rev": "80c1e5321505aeb22b7a9f23eb82f1e193c12470",
       "src": "https://github.com/shaunsingh/nord.nvim"
     },
-    "nvim-autopairs": {
-      "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
-      "src": "https://github.com/windwp/nvim-autopairs"
-    },
     "nvim-cmp": {
       "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
       "src": "https://github.com/hrsh7th/nvim-cmp"
     },
-    "nvim-colorizer.lua": {
-      "rev": "a065833f35a3a7cc3ef137ac88b5381da2ba302e",
-      "src": "https://github.com/catgoose/nvim-colorizer.lua"
     },
     "nvim-lspconfig": {
       "rev": "21db1fd40cbcbf1524ae154ab8f394fdf085749a",

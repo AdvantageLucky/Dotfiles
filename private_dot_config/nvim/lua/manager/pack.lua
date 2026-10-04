@@ -8,7 +8,6 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/shaunsingh/nord.nvim" },
 	{ src = "https://github.com/savq/melange-nvim" },
-	{ src = "https://github.com/nvim-mini/mini.nvim" },
 
 	-- @LSP
 	-- completions LuaSnip
@@ -30,12 +29,14 @@ vim.pack.add({
 	{ src = "https://github.com/L3MON4D3/LuaSnip", version = "v2.5.0" },
 
 	-- @UTILS
-	-- Misc
-	{ src = "https://github.com/catgoose/nvim-colorizer.lua" },
+	-- etc
 	{ src = "https://github.com/vyfor/cord.nvim" },
 
 	-- Snacks
 	{ src = "https://github.com/folke/snacks.nvim" },
+
+	-- Mini
+	{ src = "https://github.com/nvim-mini/mini.nvim" },
 
 	-- Parser
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
@@ -63,7 +64,6 @@ require("plugins.ui.gitsigns")
 require("plugins.ui.lualine")
 require("plugins.ui.icons")
 require("plugins.ui.melange")
-require("plugins.ui.animations")
 
 -- @LSP
 require("plugins.lsp.engine.mason")
@@ -71,14 +71,8 @@ require("plugins.lsp.engine.conform")
 require("plugins.lsp.completions.nvim_cmp")
 
 -- @UTILS
--- Misc
-require("plugins.utils.misc.autopairs")
-require("plugins.utils.misc.colorizer")
-require("plugins.utils.misc.discord")
-require("plugins.utils.misc.jump")
-
--- Snacks
-require("plugins.utils.snacks.snacks")
+-- etc
+require("plugins.utils.etc.discord")
 
 -- Parser
 require("plugins.utils.parser.treesitter")
@@ -90,3 +84,9 @@ require("plugins.utils.search.telescope")
 -- Notes
 require("plugins.utils.notes.render_markdown")
 require("plugins.utils.notes.image")
+
+-- Snacks
+require("plugins.utils.snacks.snacks")
+
+-- Mini
+require("plugins.utils.mini.mini")

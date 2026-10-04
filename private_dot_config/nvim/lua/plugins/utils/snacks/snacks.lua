@@ -1,5 +1,4 @@
 require("snacks").setup({
-
 	indent = {
 		enabled = true,
 		filter = function(buf, _)
