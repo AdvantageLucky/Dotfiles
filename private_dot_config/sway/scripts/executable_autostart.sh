@@ -19,14 +19,21 @@ if ! pgrep -x swayidle >/dev/null; then
         after-resume 'swaymsg "output * dpms on"' &
 fi
 
-# Daemons
-run_once mako # mako notifications daemon
-run_once autotiling-rs # autotiling 
+# Swaync (Notifications Daemon)
+systemctl --user reset-failed swaync 2>/dev/null
+systemctl --user start swaync 2>/dev/null
+
+# Autotiling
+run_once autotiling-rs
+
+# Wlsunset
 run_once wlsunset -l 19.4 -L -99.1 # cdmx latitude
 
 # Clipboard history
 run_once wl-paste --type text --watch cliphist store # text watchdog
 run_once wl-paste --type image --watch cliphist store # imgs watchdog
+
+# Polkit authentication
 pgrep -f polkit-mate-authentication-agent-1 >/dev/null || \
     /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 

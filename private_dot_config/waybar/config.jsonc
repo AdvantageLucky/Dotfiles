@@ -23,7 +23,7 @@
     "modules-right": [
       "tray",
       "custom/updates",
-      "custom/wallpaper",
+      "custom/notification",
       "idle_inhibitor",
       "bluetooth#group",
       "pulseaudio#group",
@@ -104,14 +104,26 @@
       "on-click": "~/.config/sway/scripts/update.sh"
     },
 
-    "custom/wallpaper": {
-      "format": "󰸉",
+    /* swaync: icon follows the unread / do-not-disturb state; event driven, no polling */
+    "custom/notification": {
+      "tooltip": false,
+      "format": "{icon}",
+      "format-icons": {
+        "notification": "󱅫",
+        "none": "󰂜",
+        "dnd-notification": "󰂛",
+        "dnd-none": "󰂛",
+        "inhibited-notification": "󰂛",
+        "inhibited-none": "󰂛",
+        "dnd-inhibited-notification": "󰂛",
+        "dnd-inhibited-none": "󰂛"
+      },
       "return-type": "json",
-      "exec": "~/.config/waybar/scripts/wallpaper-status.sh",
-      "interval": "once",
-      "signal": 8,
-      "exec-on-event": false,
-      "on-click": "~/.config/sway/scripts/wallpaper-cycle.sh"
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true
     },
 
     "idle_inhibitor": {
