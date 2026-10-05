@@ -1,0 +1,147 @@
+/* swaync for the "tierra" theme (GTK4 css). Colors: named colors from the theme. */
+@import "../theme/current/swaync.css";
+
+* {
+    font-family: "GeistMono Nerd Font Propo", monospace;
+    font-size: 10pt;
+    font-weight: 500;
+}
+
+/* ---- popups ---- */
+.notification-row {
+    outline: none;
+    background: transparent;
+    padding: 0;
+}
+
+.notification {
+    background: @bg_glass;
+    border: 1px solid @border;
+    border-radius: 10px;
+    margin: 6px 8px;
+    padding: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.notification:hover {
+    border-color: @accent_line;
+}
+
+.notification.critical {
+    border-color: @error;
+}
+
+.notification-content {
+    background: transparent;
+    padding: 10px 12px;
+}
+
+.notification-default-action,
+.notification-action {
+    background: transparent;
+    color: @fg;
+    border-radius: 10px;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+    background: @hover;
+}
+
+.summary {
+    color: @fg;
+    font-weight: 700;
+}
+
+.time {
+    color: @fg_dim;
+}
+
+.body {
+    color: @fg;
+}
+
+.body-image {
+    border-radius: 7px;
+}
+
+.close-button {
+    background: transparent;
+    color: @fg_dim;
+    border-radius: 7px;
+    min-width: 22px;
+    min-height: 22px;
+    margin: 6px;
+    padding: 0;
+}
+
+.close-button:hover {
+    background: @hover;
+    color: @accent;
+}
+
+/* ---- history panel ---- */
+.control-center {
+    background: @bg_glass;
+    border: 1px solid @border;
+    border-radius: 10px;
+    padding: 6px;
+}
+
+.control-center-list {
+    background: transparent;
+}
+
+.control-center .notification-row .notification {
+    background: linear-gradient(to bottom, @island_hi, @island_lo);
+    margin: 4px 4px;
+}
+
+.widget-title {
+    color: @fg;
+    margin: 8px 10px 4px 10px;
+    font-size: 11pt;
+}
+
+.widget-title > button {
+    background: transparent;
+    color: @fg_dim;
+    border: 1px solid @border;
+    border-radius: 7px;
+    padding: 2px 10px;
+}
+
+.widget-title > button:hover {
+    color: @accent;
+    border-color: @accent_line;
+}
+
+.widget-dnd {
+    color: @fg_dim;
+    margin: 4px 10px 8px 10px;
+}
+
+.widget-dnd > switch {
+    background: @bg_alt;
+    border: 1px solid @border;
+    border-radius: 10px;
+}
+
+.widget-dnd > switch:checked {
+    background: @accent_soft;
+    border-color: @accent_line;
+}
+
+.widget-dnd > switch slider {
+    background: @fg_dim;
+    border-radius: 10px;
+}
+
+.widget-dnd > switch:checked slider {
+    background: @accent;
+}
+
+.control-center-list-placeholder,
+.notification-group-icon {
+    color: @fg_dim;
+}
