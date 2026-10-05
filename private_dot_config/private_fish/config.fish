@@ -13,6 +13,7 @@ alias ls 'exa -l --git --icons --group-directories-first'
 alias info 'pinfo'
 
 # abbreviatures
+abbr s 'nnn'
 abbr q 'exit'
 abbr n 'nvim'
 abbr c 'clear'

@@ -77,7 +77,7 @@ sudo pacman -S --needed --noconfirm \
 # @Editores y Aplicaciones
 print_step "Instalando Editores y Apps principales..."
 sudo pacman -S --needed --noconfirm \
-    neovim vim nano tree-sitter tree-sitter-cli \
+    neovim vim nano tree-sitter tree-sitter-cli nnn \
     nautilus gvfs gvfs-mtp \
     swayimg mpv zathura zathura-pdf-mupdf obsidian
 
