@@ -23,14 +23,15 @@ fi
 run_once mako # mako notifications daemon
 run_once autotiling-rs # autotiling 
 run_once wlsunset -l 19.4 -L -99.1 # cdmx latitude
+
+# Clipboard history
 run_once wl-paste --type text --watch cliphist store # text watchdog
 run_once wl-paste --type image --watch cliphist store # imgs watchdog
 pgrep -f polkit-mate-authentication-agent-1 >/dev/null || \
     /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 
-# GTK theme
+# GTK theme (color-scheme is owned by the `theme` command: day/night)
 gsettings set org.gnome.desktop.interface gtk-theme 'Colloid-Orange-Dark-Gruvbox'
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # micmute LED
 if [[ "$(pamixer --default-source --get-mute)" == "true" ]]; then

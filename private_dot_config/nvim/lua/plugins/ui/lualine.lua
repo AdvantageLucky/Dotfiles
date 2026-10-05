@@ -22,7 +22,8 @@ end
 
 require("lualine").setup({
 	options = {
-		theme = "auto",
+		-- built from the desktop palette; loading the module also applies the colorscheme first
+		theme = require("plugins.ui.theme").lualine_theme(),
 		section_separators = "",
 		component_separators = { left = "", right = "::" },
 		disabled_filetypes = { "alpha", "Outline" },

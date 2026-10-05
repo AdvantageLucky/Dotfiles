@@ -6,7 +6,7 @@
     "margin-right": 0,
     "margin-left": 0,
     "position": "top",
-    "layer": "bot",
+    "layer": "top",
 
     "modules-left": [
       "custom/clock",
@@ -29,7 +29,7 @@
       "pulseaudio#group",
       "network"
     ],
-    
+
     /*left modules */
     "custom/clock": {
       "exec": "~/.config/waybar/scripts/clock-status.sh",
@@ -43,13 +43,14 @@
       "all-outputs": false,
       "tooltip": false
     },
-    
+
+    /* battery: contextual. Hidden (empty format) when plugged or full. */
     "battery#group": {
       "format": "{icon} {capacity}%",
       "format-charging": "󰂄 {capacity}%",
-      "format-plugged": "󰂄 {capacity}%",
+      "format-plugged": "",
+      "format-full": "",
       "format-alt": "󱧥 {time}",
-      "format-full": "󱈑 {capacity}%",
       "format-icons": ["󱊡", "󱊢", "󱊣"],
       "states": {
         "warning": 30,
@@ -57,7 +58,7 @@
       },
       "tooltip": false
     },
-    
+
     "backlight#group": {
       "device": "intel_backlight",
       "format": "{icon} {percent}%",
@@ -86,15 +87,16 @@
       "on-scroll-down": "playerctl previous"
     },
     /* --- */
-    
+
     /* right modules */
     "tray": {
       "tooltip": false,
       "spacing": 10
     },
 
+    /* updates: contextual. The script prints an empty text when nothing is pending. */
     "custom/updates": {
-      "format": "󰚰",
+      "format": "{}",
       "return-type": "json",
       "exec": "~/.config/waybar/scripts/updates-status.sh",
       "interval": 1800,
@@ -122,10 +124,11 @@
       "tooltip-format-deactivated": "Inhibidor de reposo: inactivo\nBloqueo a los 3 min de inactividad"
     },
 
+    /* bluetooth: contextual. Hidden when off or disabled. */
     "bluetooth#group": {
       "format": "󰂯",
-      "format-off":"󰂲",
-      "format-disabled": "󰂲",
+      "format-off": "",
+      "format-disabled": "",
       "format-connected": "󰂯 {status} {device_battery_percentage}",
       "format-connected-battery": "{icon} {device_battery_percentage}%",
       "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],

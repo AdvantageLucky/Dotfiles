@@ -11,6 +11,8 @@
 
 # @Init
 include ~/.config/sway/init/variables.conf
+# Theme: colors, radius, gaps (generated; `theme day|night` switches it)
+include ~/.config/theme/current/sway.conf
 include ~/.config/sway/init/inputs.conf
 include ~/.config/sway/init/outputs.conf
 

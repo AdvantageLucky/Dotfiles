@@ -69,7 +69,7 @@ vim.pack.add({
 require("plugins.ui.gitsigns")
 require("plugins.ui.lualine")
 require("plugins.ui.icons")
-require("plugins.ui.melange")
+require("plugins.ui.theme") -- mini.base16 from the desktop theme (melange is its fallback)
 
 -- @LSP
 require("plugins.lsp.engine.mason")
