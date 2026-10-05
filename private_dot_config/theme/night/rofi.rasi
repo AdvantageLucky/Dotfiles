@@ -1,0 +1,16 @@
+* {
+  bg: #181616FF;
+  bg-alt: #1E1B1BFF;
+  selection: #2E2A2AFF;
+  border: #3A3535FF;
+  fg: #D4BE98FF;
+  fg-dim: #928374FF;
+  accent: #C87941FF;
+  accent-2: #689D8AFF;
+  error: #D26464FF;
+  scrim: #181616D9;
+  bg-glass: #181616F5;
+  accent-soft: #C879412E;
+  radius: 10px;
+  ui-font: "GeistMono Nerd Font Propo 10";
+}

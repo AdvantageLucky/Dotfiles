@@ -1,0 +1,21 @@
+return {
+	background = "dark",
+	palette = {
+		base00 = "#181616",
+		base01 = "#1E1B1B",
+		base02 = "#2E2A2A",
+		base03 = "#928374",
+		base04 = "#BDAE8B",
+		base05 = "#D4BE98",
+		base06 = "#E1D1AE",
+		base07 = "#EBDDBE",
+		base08 = "#D26464",
+		base09 = "#C87941",
+		base0A = "#E7BB5C",
+		base0B = "#B4C76E",
+		base0C = "#689D8A",
+		base0D = "#7B8FD4",
+		base0E = "#B57188",
+		base0F = "#A5684A",
+	},
+}
