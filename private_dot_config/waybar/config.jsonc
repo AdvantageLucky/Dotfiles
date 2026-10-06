@@ -23,8 +23,7 @@
     "modules-right": [
       "tray",
       "custom/updates",
-      "custom/notification",
-      "idle_inhibitor",
+      "group/notif",
       "bluetooth#group",
       "pulseaudio#group",
       "network"
@@ -44,7 +43,7 @@
       "tooltip": false
     },
 
-    /* battery: contextual. Hidden (empty format) when plugged or full. */
+    /* battery: contextual. Hidden (empty format) when plugged or full */
     "battery#group": {
       "format": "{icon} {capacity}%",
       "format-charging": "󰂄 {capacity}%",
@@ -94,7 +93,7 @@
       "spacing": 10
     },
 
-    /* updates: contextual. The script prints an empty text when nothing is pending. */
+    /* updates: contextual. The script prints an empty text when nothing is pending */
     "custom/updates": {
       "format": "{}",
       "return-type": "json",
@@ -102,6 +101,12 @@
       "interval": 1800,
       "signal": 9,
       "on-click": "~/.config/sway/scripts/update.sh"
+    },
+
+    /* one chip, two buttons: notifications | idle inhibitor */
+    "group/notif": {
+      "orientation": "horizontal",
+      "modules": ["custom/notification", "idle_inhibitor"]
     },
 
     /* swaync: icon follows the unread / do-not-disturb state; event driven, no polling */
@@ -136,7 +141,7 @@
       "tooltip-format-deactivated": "Inhibidor de reposo: inactivo\nBloqueo a los 3 min de inactividad"
     },
 
-    /* bluetooth: contextual. Hidden when off or disabled. */
+    /* bluetooth: contextual. Hidden when off or disabled */
     "bluetooth#group": {
       "format": "󰂯",
       "format-off": "",

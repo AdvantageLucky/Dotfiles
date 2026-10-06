@@ -36,8 +36,7 @@ window#waybar {
 #bluetooth,
 #pulseaudio,
 #custom-updates,
-#custom-notification,
-#idle_inhibitor,
+#notif,
 #mpris,
 #custom-clock {
     background: linear-gradient(to bottom, @island_hi, @island_lo);
@@ -50,17 +49,22 @@ window#waybar {
     transition: all 0.2s ease-in-out;
 }
 
-/* the only segmented pair: notifications | idle inhibitor */
-#custom-notification {
-    margin-right: 0;
-    border-right: none;
-    border-radius: 10px 0px 0px 10px;
+/* the one chip with two buttons (group/notif): the group is the island; the buttons inside have no
+   border, background or shadow of their own, so hovering or toggling one can never split the chip */
+#notif {
+    padding: 3px 4px;
 }
 
+#custom-notification,
 #idle_inhibitor {
-    margin-left: 0;
-    border-left: none;
-    border-radius: 0px 10px 10px 0px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 2px 8px;
+    border-radius: 7px;
+    color: @fg;
+    transition: all 0.2s ease-in-out;
 }
 
 /* left side */
@@ -132,12 +136,17 @@ window#waybar {
     font-style: normal;
 }
 
-/* states: glow at night; in day `glow` is transparent and the border carries it */
+/* state of the inhibitor: an inner highlight inside the chip (same idea as the workspace buttons) */
 #idle_inhibitor.activated {
     background: @accent_soft;
     color: @accent;
-    border-color: @accent_line;
-    box-shadow: inset 0 1px 0 @inner_light, 0 0 12px @glow;
+}
+
+/* hover on the two buttons of the chip: only the icon color and an inner highlight */
+#custom-notification:hover,
+#idle_inhibitor:hover {
+    background: @hover;
+    color: @accent;
 }
 
 #custom-notification.notification {
@@ -161,8 +170,6 @@ window#waybar {
 #bluetooth:hover,
 #pulseaudio:hover,
 #custom-updates:hover,
-#custom-notification:hover,
-#idle_inhibitor:hover,
 #network:hover,
 #custom-clock:hover,
 #mpris:hover,
