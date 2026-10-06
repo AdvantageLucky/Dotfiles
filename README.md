@@ -19,11 +19,11 @@
 | **Terminal** | Kitty |
 | **Shell** | Fish (Eza · Zoxide · Fzf) |
 | **Text Editor** | Neovim |
-| **Launcher** | Fuzzel |
+| **Launcher** | Rofi |
 | **Browser** | Zen Browser |
 | **Music** | mpd + rmpc |
 | **File Manager** | Nautilus (GTK4) |
-| **Notifications** | Mako |
+| **Notifications** | SwayNC |
 | **Lock screen** | Swaylock-effects |
 | **Power menu** | Wlogout |
 
@@ -60,7 +60,7 @@ Everything is managed with **chezmoi**.
 | `Super + t` | Terminal (Kitty) |
 | `Super + f` | Browser (Zen) |
 | `Super + d` | Files (Nautilus) |
-| `Super + a` | Launcher (Fuzzel) |
+| `Super + a` | Launcher (Rofi) |
 | `Super + m` | Toggle jukebox (rmpc) |
 | `Super + q` | Close window |
 | `Super + Shift + c` | Reload SwayFX |
@@ -68,7 +68,7 @@ Everything is managed with **chezmoi**.
 | `Print` | Full screenshot |
 | `Super + Esc` | Lock screen (Swaylock) |
 | `Super + Shift + e` / `PowerButton` | Power menu (Wlogout) |
-| `Super + c`| Cliphist (fuzzel + Cliphist)|
+| `Super + c`| Cliphist (Rofi + Cliphist)|
 ---
 
 # Component list in detail
@@ -78,7 +78,7 @@ Everything is managed with **chezmoi**.
 * **Audio:** Pipewire, Wireplumber, Pavucontrol
 * **Music:** mpd (`mpd.socket`), mpdscribble (scrobbler), rmpc (TUI client)
 * **Network:** NetworkManager, Bluetooth (bluez)
-* **WM:** SwayFX, Waybar, Mako, Fuzzel, Swaybg, Swayidle, Autotiling-RS
+* **WM:** SwayFX, Waybar, SwayNC, Rofi, Swaybg, Swayidle, Autotiling-RS
 * **Theming:** bibata-cursor-theme (cursor), Adwaita (icons, built-in), Colloid-gtk-theme (gtk theme)
 * **Utilities:** Grim, Slurp, Swappy, Brightnessctl, Btop, Fzf, FD, Bat, Ripgrep, Eza, Zoxide, Wget, Unzip, Zip, P7zip, Fortune-mod
 * **Apps:** Nautilus, Cliphist, Neovim, Swayimg, Mpv, Zathura, Kitty, Fish
