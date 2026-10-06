@@ -13,17 +13,22 @@ alias ls 'exa -l --git --icons --group-directories-first'
 alias info 'pinfo'
 
 # abbreviatures
+
+# shortcuts
 abbr s 'nnn'
 abbr q 'exit'
 abbr n 'nvim'
 abbr c 'clear'
 abbr cdd 'cd ..'
 abbr u 'sudo pacman -Syu'
+
+# configs
 abbr nvimconfig 'cd ~/.config/nvim'
 abbr swayconfig 'cd ~/.config/sway'
-abbr waybarconfig 'cd ~/.config/waybar/'
-abbr fuzzelconfig 'cd ~/.config/fuzzel/'
-abbr makoconfig 'nvim ~/.config/mako/config'
+abbr roficonfig 'cd ~/.config/rofi'
+abbr themeconfig 'cd ~/.config/theme'
+abbr waybarconfig 'cd ~/.config/waybar'
+abbr swayncconfig 'cd ~/.config/swaync'
 abbr fishconfig 'nvim ~/.config/fish/config.fish'
 abbr kittyconfig 'nvim ~/.config/kitty/kitty.conf'
 

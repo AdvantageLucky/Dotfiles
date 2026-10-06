@@ -1,0 +1,52 @@
+# theme-gen.py renders it into ~/.config/theme/{night,day}/
+
+[shared]
+font_mono      = "GeistMono Nerd Font Mono"   # terminals
+font_ui        = "GeistMono Nerd Font Propo"  # bar, launcher, notifications
+radius         = 10                           # px, every rounded surface
+gaps_inner     = 8                            # px, between windows (sway)
+gaps_outer     = 16                           # px, between windows and the screen edge (sway)
+kitty_size     = 10.5
+kitty_padding  = 4
+kitty_opacity  = 0.93
+scrim_opacity  = 0.85                         # dimmed full screen of rofi / wlogout (text sits right on it)
+icons_src      = "~/.config/wlogout/icons"    # one-color silhouettes; their alpha is used as a mask
+icon_px        = 64                           # wlogout: icon size on screen
+label_px       = 15                           # wlogout: label size (drawn into the same image as the icon)
+layout_file    = "~/.config/wlogout/layout"   # wlogout labels come from here
+ui_px          = 12                           # waybar
+ui_pt          = 10                           # rofi, swaync, wlogout
+
+[night]
+background = "dark"
+wallpaper  = "~/Pictures/wallpapers/windows.png"   # empty string = solid color `bg`
+bg           = "#181616"
+bg_alt       = "#1E1B1B"
+selection    = "#2E2A2A"
+border       = "#3A3535"
+fg           = "#D4BE98"
+fg_dim       = "#928374"
+accent       = "#C87941"
+accent_2     = "#689D8A"
+error        = "#D26464"
+ansi   = ["#181616", "#D26464", "#B4C76E", "#E7BB5C", "#7B8FD4", "#B57188", "#689D8A", "#C2C2C2",
+          "#928374", "#E67B7B", "#CAD98A", "#F0CC7A", "#9AAAE0", "#C8889A", "#89B8A8", "#D4BE98"]
+base16 = ["#181616", "#1E1B1B", "#2E2A2A", "#928374", "#BDAE8B", "#D4BE98", "#E1D1AE", "#EBDDBE",
+          "#D26464", "#C87941", "#E7BB5C", "#B4C76E", "#689D8A", "#7B8FD4", "#B57188", "#A5684A"]
+
+[day]
+background = "light"
+wallpaper  = ""
+bg           = "#EFE6D2"
+bg_alt       = "#E6DAC0"
+selection    = "#DCCDAA"
+border       = "#C9B995"
+fg           = "#2A2218"
+fg_dim       = "#6B5C46"
+accent       = "#855423"
+accent_2     = "#3E6658"
+error        = "#AD3131"
+ansi   = ["#2A2218", "#8A2929", "#46501F", "#61470E", "#304693", "#713B4D", "#345046", "#4A3F2E",
+          "#716349", "#AD3131", "#576421", "#7A590E", "#3A57BC", "#95455B", "#3E6658", "#1A140C"]
+base16 = ["#EFE6D2", "#E6DAC0", "#DCCDAA", "#716349", "#4A3F2E", "#2A2218", "#1F190F", "#14100A",
+          "#8A2929", "#855423", "#61470E", "#46501F", "#345046", "#304693", "#713B4D", "#6D4020"]

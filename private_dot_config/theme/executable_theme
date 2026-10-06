@@ -1,0 +1,48 @@
+#!/bin/bash
+# theme [day|night|toggle|gen]  -  switch the desktop theme
+# no argument prints the current one
+
+# Everything about the theme lives in ~/.config/theme:
+# - 'theme' command (switch desktop theme or print the current one)
+#   'theme gen' command (re-render night/ and day/ from theme.toml)
+# - theme.toml (colors, fonts, sizes)
+# - theme-gen.py (renders the toml into night/ and day/)
+# - and the generated night/, day/ and 'current'.
+#
+# the mode is the 'current' link (it survives reboots and every reload is best effort)
+
+dir="$HOME/.config/theme"
+cur=$(basename "$(readlink -f "$dir/current" 2>/dev/null)")
+
+case "${1:-}" in
+    "")       echo "$cur"; exit 0 ;;
+    gen)      exec python3 "$dir/theme-gen.py" ;;
+    toggle)   [ "$cur" = night ] && mode=day || mode=night ;;
+    day|night) mode=$1 ;;
+    *)        echo "usage: theme [day|night|toggle|gen]" >&2; exit 2 ;;
+esac
+
+if [ ! -d "$dir/$mode" ]; then
+    echo "theme: $dir/$mode does not exist (run \`theme gen\`)" >&2
+    exit 1
+fi
+
+# atomic flip of the link
+ln -sfn "$mode" "$dir/.current.new" && mv -T "$dir/.current.new" "$dir/current" || exit 1
+
+# GTK / libadwaita / Chromium follow the portal color-scheme
+scheme=prefer-dark; [ "$mode" = day ] && scheme=prefer-light
+gsettings set org.gnome.desktop.interface color-scheme "$scheme" 2>/dev/null
+
+# reloads 
+# sway.conf, wallpaper, restarts waybar
+[ -n "${SWAYSOCK:-}" ] && swaymsg reload >/dev/null 2>&1
+# kitty re-reads its config
+pkill -USR1 -x kitty 2>/dev/null
+#swaync css
+swaync-client -rs >/dev/null 2>&1
+# open nvims reload the palette
+pkill -USR1 -x nvim 2>/dev/null
+
+echo "theme: $mode"
+exit 0
