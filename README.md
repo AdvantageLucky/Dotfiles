@@ -1,7 +1,7 @@
-<h1 align="center">SH3 Dotfiles</h1>
+<h1 align="center">Personal Dotfiles</h1>
 
 <p align="center">
-  Minimalist SwayFX setup · inspired by melange.nvim, gruvbox and SH3
+  Minimalist SwayFX setup - inspired by melange.nvim, gruvbox, sh3 ambien, etc
 </p>
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c86abbc2-3fde-4fc2-a455-3b30422a4899" />
