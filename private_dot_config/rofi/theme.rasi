@@ -1,0 +1,74 @@
+/* Launcher for the "tierra" theme: text sitting directly on the dimmed screen, no cards.
+   Colors come from colors.rasi -> ~/.config/theme/current/rofi.rasi */
+@import "colors.rasi"
+
+* {
+    font: @ui-font;
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    fullscreen: true;
+    background-color: @scrim;
+    padding: 20% 30%;
+    children: [ mainbox ];
+}
+
+mainbox {
+    expand: false;
+    background-color: transparent;
+    border: 0px;
+    padding: 0px;
+    spacing: 14px;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: transparent;
+    padding: 0px 10px 6px 10px;
+    spacing: 8px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @accent;
+}
+
+entry {
+    placeholder: "Buscar";
+    placeholder-color: @fg-dim;
+    cursor-color: @accent;
+}
+
+listview {
+    lines: 8;
+    columns: 1;
+    fixed-height: true;
+    scrollbar: false;
+    spacing: 2px;
+}
+
+element {
+    padding: 6px 10px;
+    background-color: transparent;
+}
+
+/* selection is only a color change: no box */
+element selected.normal,
+element selected.active,
+element selected.urgent {
+    background-color: transparent;
+    text-color: @accent;
+}
+
+element-text {
+    vertical-align: 0.5;
+    background-color: transparent;
+    text-color: inherit;
+}
+
+message {
+    padding: 0px 10px;
+    background-color: transparent;
+}
