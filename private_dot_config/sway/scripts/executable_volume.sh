@@ -29,10 +29,10 @@ MIC_STATUS=$(pamixer --default-source --get-mute)
 
 if [[ "$1" == "mic-mute" ]]; then
     if [[ "$MIC_STATUS" == "true" ]]; then
-        notify-send -a "System" "Micrófono" -h string:x-dunst-stack-tag:mic -u low "Silenciado  "
+        notify-send -a "System" "Micrófono" -h string:x-canonical-private-synchronous:mic -u low "Silenciado  "
         brightnessctl -d "platform::micmute" set 0
     else
-        notify-send -a "System" "Micrófono" -h string:x-dunst-stack-tag:mic -u low "Activo "
+        notify-send -a "System" "Micrófono" -h string:x-canonical-private-synchronous:mic -u low "Activo "
         brightnessctl -d "platform::micmute" set 1
     fi
 else

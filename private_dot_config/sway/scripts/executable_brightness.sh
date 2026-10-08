@@ -16,5 +16,5 @@ VAL=$(brightnessctl -m | cut -d, -f4 | tr -d '%')
 
 # Send notification (using a stack tag to avoid flooding)
 notify-send -a "System" "Brillo" \
-    -h string:x-dunst-stack-tag:bright \
+    -h string:x-canonical-private-synchronous:bright \
     -u low "󰃠  ${VAL}%"
