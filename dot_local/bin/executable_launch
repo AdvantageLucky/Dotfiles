@@ -1,0 +1,10 @@
+#!/bin/bash
+# launch <command...>
+# Starts a program so that its windows open on the workspace where it was launched, even if you
+# switch workspace before they show up
+
+if [ -n "${SWAYSOCK:-}" ]; then
+    # %q keeps arguments with spaces or quotes intact when sway re-parses the command line
+    exec swaymsg exec -- "$(printf '%q ' "$@")" >/dev/null
+fi
+exec setsid -f "$@" >/dev/null 2>&1

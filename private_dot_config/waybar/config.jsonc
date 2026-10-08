@@ -81,7 +81,7 @@
         "stopped": "󰓛"
       },
       "tooltip-format": "{player} · {album}",
-      "on-click-right": "swaymsg '[app_id=\"jukebox\"] scratchpad show' || kitty --app-id jukebox -o window_padding_width=0 rmpc",
+      "on-click-right": "swaymsg '[app_id=\"jukebox\"] scratchpad show' || launch kitty --app-id jukebox -o window_padding_width=0 rmpc",
       "on-scroll-up": "playerctl next",
       "on-scroll-down": "playerctl previous"
     },
@@ -100,7 +100,7 @@
       "exec": "~/.config/waybar/scripts/updates-status.sh",
       "interval": 1800,
       "signal": 9,
-      "on-click": "~/.config/sway/scripts/update.sh"
+      "on-click": "launch ~/.config/sway/scripts/update.sh"
     },
 
     /* one chip, two buttons: notifications | idle inhibitor */
@@ -150,7 +150,7 @@
       "format-connected-battery": "{icon} {device_battery_percentage}%",
       "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
       "tooltip": false,
-      "on-click": "blueman-manager"
+      "on-click": "launch blueman-manager"
 
     },
 
@@ -161,7 +161,7 @@
       "format-source-muted": "󰍭",
       "format-icons": ["󰕿", "󰖀", "󰕾"],
       "tooltip": false,
-      "on-click": "pavucontrol",
+      "on-click": "launch pavucontrol",
       "nospacing": 1,
       "scroll-step": 5,
       "max-volume": 100
@@ -172,6 +172,6 @@
       "format-ethernet": "󰈀 Eth",
       "format-disconnected": "󰤮 Sin red",
       "tooltip": false,
-      "on-click": "nm-connection-editor"
+      "on-click": "launch nm-connection-editor"
     }
 }
