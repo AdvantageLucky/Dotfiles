@@ -7,6 +7,9 @@ vim.keymap.set("i", "<C-a>", "<Home>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-e>", "<End>", { noremap = true, silent = true })
 nmap("<leader>y", "<cmd> %y+ <CR>", "copy all file")
 
+-- @MAKE SHORTCUT
+nmap("<leader>m", "<cmd>make<CR>", "execute make command if theres makefile in the current scope")
+
 -- @SEARCH
 local builtin = require("telescope.builtin")
 
