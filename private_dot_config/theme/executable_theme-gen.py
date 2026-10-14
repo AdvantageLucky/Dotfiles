@@ -5,7 +5,6 @@ usage: theme-gen.py [--check]   --check only verifies contrast and writes nothin
 
 import pathlib
 import sys
-
 import tomllib
 
 SRC = pathlib.Path(__file__).with_name("theme.toml")
@@ -137,6 +136,10 @@ def render(mode, m, s, night):
         "}",
         f"corner_radius {s['radius']}",
         f"shadow_color {hex8('#000000', 0.40)}",
+        # weaker shadow on windows without focus, and inactive windows are dimmed towards the
+        # background color of the mode (in day mode a fade to paper, not to black)
+        f"shadow_inactive_color {hex8('#000000', 0.15)}",
+        f"dim_inactive_colors.unfocused {hex8(m['bg'], 1)}",
         "gaps {",
         f"  inner {s['gaps_inner']}px",
         f"  outer {s['gaps_outer']}px",
