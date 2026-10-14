@@ -5,6 +5,9 @@ configuration {
     display-drun: "Apps";
     display-run: "Run";
     display-window: "Windows";
+    /* the launch command makes the windows of what you start open on the 
+        workspace you started it from (see ~/.local/bin/launch) */
+    run-command: "launch {cmd}";
 }
 
 @theme "theme.rasi"
