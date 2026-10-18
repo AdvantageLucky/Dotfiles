@@ -1,0 +1,86 @@
+/* Clipboard history (cliphist): a floating panel in the middle of the screen.
+   The launcher (theme.rasi) is text on a dimmed full screen; that layout does not hold up here:
+   in rofi, a fullscreen window with percentage padding stops being centered as soon as the
+   list has icons (the column jumps to the corner). A panel does not depend on that, and long
+   entries and thumbnails read better inside a bounded area anyway.
+   Colors and radius come from colors.rasi -> ~/.config/theme/current/rofi.rasi */
+@import "colors.rasi"
+
+* {
+    font: @ui-font;
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    location: center;
+    anchor: center;
+    fullscreen: false;
+    width: 56%;
+    background-color: @bg-glass;
+    border: 1px;
+    border-color: @border;
+    border-radius: @radius;
+    padding: 14px;
+    children: [ mainbox ];
+}
+
+mainbox {
+    background-color: transparent;
+    spacing: 10px;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border-radius: @radius;
+    padding: 8px 12px;
+    spacing: 8px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @accent;
+}
+
+entry {
+    placeholder: "Buscar";
+    placeholder-color: @fg-dim;
+    cursor-color: @accent;
+}
+
+listview {
+    lines: 8;
+    columns: 1;
+    fixed-height: true;
+    scrollbar: false;
+    spacing: 3px;
+}
+
+element {
+    padding: 8px 12px;
+    spacing: 12px;
+    border-radius: 7px;
+}
+
+/* the current entry: a soft accent block and accent text */
+element selected.normal,
+element selected.active,
+element selected.urgent {
+    background-color: @accent-soft;
+    text-color: @accent;
+}
+
+/* thumbnails of images. rofi reserves the icon column in every row once -show-icons is on, so
+   this size also sets the height of the text rows: a smaller size means more rows on screen. */
+element-icon {
+    size: 2.6em;
+    vertical-align: 0.5;
+    background-color: transparent;
+}
+
+element-text {
+    vertical-align: 0.5;
+    background-color: transparent;
+    text-color: inherit;
+}
