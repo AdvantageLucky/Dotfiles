@@ -1,0 +1,74 @@
+{{- /* Only the sway profile renders this script; for base it is empty and chezmoi skips it */ -}}
+{{- if eq (get . "profile" | default "base") "sway" -}}
+#!/bin/bash
+# Sway profile: the SwayFX desktop on top of the base profile (run_once_10-install-base.sh).
+# No full system upgrade here (`pacman -Syu`): do that yourself before the first run.
+set -e
+
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+print_step()    { echo -e "${BLUE}==>${NC} ${GREEN}$1${NC}"; }
+print_warning() { echo -e "${YELLOW}==> WARNING:${NC} $1"; }
+
+# @Hardware (this laptop): only what the machine actually has
+if grep -qi intel /proc/cpuinfo; then
+    print_step "Installing Intel drivers..."
+    sudo pacman -S --needed --noconfirm \
+        intel-ucode mesa vulkan-intel intel-media-driver libva-intel-driver sof-firmware
+fi
+# tlp conflicts with power-profiles-daemon (CachyOS ships it)
+if pacman -Qq power-profiles-daemon &>/dev/null; then
+    print_warning "power-profiles-daemon is installed: skipping tlp"
+else
+    sudo pacman -S --needed --noconfirm tlp
+    sudo systemctl enable --now tlp
+fi
+
+# @Window manager and desktop components
+print_step "Installing SwayFX and the interface components..."
+yay -S --needed --noconfirm swayfx phinger-cursors
+sudo pacman -S --needed --noconfirm \
+    swaybg swayidle waybar rofi swaync autotiling-rs wlsunset \
+    xorg-xwayland wl-clipboard cliphist mate-polkit \
+    grim slurp swappy imagemagick libnotify \
+    brightnessctl python-pillow
+
+# @Audio and network
+print_step "Installing audio and network..."
+sudo pacman -S --needed --noconfirm \
+    pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber pavucontrol playerctl \
+    mpd mpdscribble rmpc \
+    networkmanager nm-connection-editor bluez bluez-utils blueman
+sudo systemctl enable --now NetworkManager
+sudo systemctl enable --now bluetooth
+systemctl --user enable mpd.socket
+systemctl --user enable mpdscribble
+
+# @Applications
+print_step "Installing applications..."
+sudo pacman -S --needed --noconfirm \
+    nautilus gvfs gvfs-mtp \
+    swayimg mpv zathura zathura-pdf-mupdf obsidian
+
+# @Theme
+if [ ! -d "$HOME/.themes/Colloid-Orange-Dark-Gruvbox" ] && [ ! -d "$HOME/.local/share/themes/Colloid-Orange-Dark-Gruvbox" ]; then
+    print_step "Installing Colloid-gtk-theme (Colloid-Orange-Dark-Gruvbox)..."
+    sudo pacman -S --needed --noconfirm sassc
+    rm -rf /tmp/Colloid-gtk-theme
+    git clone --depth=1 https://github.com/vinceliuice/Colloid-gtk-theme.git /tmp/Colloid-gtk-theme
+    /tmp/Colloid-gtk-theme/install.sh --theme orange -c dark --tweaks gruvbox -l
+    rm -rf /tmp/Colloid-gtk-theme
+fi
+
+# @AUR packages
+print_step "Installing AUR packages..."
+yay -S --needed --noconfirm \
+    zen-browser-bin \
+    swaylock-effects \
+    wlogout
+
+print_step "Sway profile done. Run \`theme gen\` once to generate the desktop theme."
+{{- end }}
