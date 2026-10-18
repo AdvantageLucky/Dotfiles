@@ -1,10 +1,3 @@
-if status is-login
-  if test (tty) = /dev/tty1
-    test -f ~/.config/fish/sway.log; and mv ~/.config/fish/sway.log ~/.config/fish/sway.log.old
-    exec sway -V > ~/.config/fish/sway.log 2>&1
-  end
-end
-
 # greetings
 set -g fish_greeting
 
@@ -24,11 +17,6 @@ abbr u 'sudo pacman -Syu'
 
 # configs
 abbr nvimconfig 'cd ~/.config/nvim'
-abbr swayconfig 'cd ~/.config/sway'
-abbr roficonfig 'cd ~/.config/rofi'
-abbr themeconfig 'cd ~/.config/theme'
-abbr waybarconfig 'cd ~/.config/waybar'
-abbr swayncconfig 'cd ~/.config/swaync'
 abbr fishconfig 'nvim ~/.config/fish/config.fish'
 abbr kittyconfig 'nvim ~/.config/kitty/kitty.conf'
 
@@ -46,29 +34,21 @@ set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -gx MANROFFOPT "-c"
 
 set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
-
-# WAYLAND & SWAY VARIABLES
-set -gx XDG_CURRENT_DESKTOP sway
-set -gx XDG_SESSION_DESKTOP sway
-set -gx XDG_SESSION_TYPE wayland
-set -gx GDK_BACKEND wayland,x11
-set -gx CLUTTER_BACKEND wayland
-set -gx MOZ_ENABLE_WAYLAND 1
-set -gx LIBVA_DRIVER_NAME iHD
-set -gx GST_VAAPI_ALL_DRIVERS 1
 set -gx NODE_OPTIONS "--no-warnings"
-set -gx PREFER_LOW_POWER 1
-set -gx QT_QPA_PLATFORM "wayland;xcb"
-set -gx _JAVA_AWT_WM_NONREPARENTING 1
-set -gx GRIM_DISABLE_DMABUF 1
-set -gx SDL_VIDEODRIVER wayland
 
 # ssh
 set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # Flutter
-set -gx PATH "$HOME/flutter/bin" $PATH
+set -gx PATH "$HOME/dev/flutter/bin" $PATH
+
+# Go
+set -gx GOPATH "$HOME/dev/go"
+fish_add_path -g $GOPATH/bin
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# claude-code
+fish_add_path -g $HOME/.local/bin
