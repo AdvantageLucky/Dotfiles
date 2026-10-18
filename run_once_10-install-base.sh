@@ -20,7 +20,7 @@ fi
 # @Fonts (kitty, prompt and nvim icons)
 print_step "Installing fonts..."
 sudo pacman -S --needed --noconfirm \
-    ttf-inter ttf-liberation \
+    inter-font ttf-liberation \
     noto-fonts noto-fonts-cjk noto-fonts-emoji \
     ttf-nerd-fonts-symbols-mono otf-geist-mono-nerd
 
@@ -29,7 +29,7 @@ print_step "Installing runtimes and languages..."
 sudo pacman -S --needed --noconfirm \
     python python-pip \
     clang \
-    rust cargo \
+    rust \
     lua luarocks \
     go \
     nodejs npm \
@@ -39,7 +39,7 @@ sudo pacman -S --needed --noconfirm \
 print_step "Installing terminal, shell and CLI tools..."
 sudo pacman -S --needed --noconfirm \
     kitty fish eza fzf fd bat ripgrep zoxide btop git-delta \
-    wget unzip zip p7zip fortune-mod
+    wget unzip zip 7zip fortune-mod
 
 # @Editors
 print_step "Installing editors..."

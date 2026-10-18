@@ -1,7 +1,8 @@
 {{- /* Asked once per machine (`chezmoi init`), then kept in ~/.config/chezmoi/chezmoi.toml.
        base = tools that do not depend on a compositor (fish, nvim, kitty, btop)
-       sway = base + the SwayFX desktop (bar, launcher, notifications, theme system) */ -}}
-{{- $profile := promptChoiceOnce . "profile" "Profile" (list "base" "sway") "base" -}}
+       sway = base + the SwayFX desktop (bar, launcher, notifications, theme system)
+       niri = base + niri with the noctalia shell */ -}}
+{{- $profile := promptChoiceOnce . "profile" "Profile" (list "base" "sway" "niri") "base" -}}
 
 [data]
     profile = {{ $profile | quote }}

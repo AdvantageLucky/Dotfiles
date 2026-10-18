@@ -27,3 +27,10 @@ components-list.md
 .config/fish/conf.d/sway.fish
 .local/bin/launch
 {{- end }}
+
+{{- if ne $profile "niri" }}
+
+# @niri profile only: niri + noctalia
+.config/niri
+.config/noctalia
+{{- end }}
