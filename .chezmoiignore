@@ -9,3 +9,21 @@ components-list.md
 .config/fish/conf.d/z.fish
 .config/fish/functions/fisher.fish
 .config/fish/functions/__z*.fish
+
+{{- /* A missing profile means base: the safe side (applies less, never the desktop) */}}
+{{- $profile := get . "profile" | default "base" }}
+
+{{- if ne $profile "sway" }}
+
+# @sway profile only: the graphical desktop and everything wired to it
+.config/sway
+.config/waybar
+.config/rofi
+.config/swaync
+.config/wlogout
+.config/theme
+.config/gtk-3.0
+.config/gtk-4.0
+.config/fish/conf.d/sway.fish
+.local/bin/launch
+{{- end }}
