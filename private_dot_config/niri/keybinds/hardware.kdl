@@ -1,0 +1,29 @@
+// Hardware keys (XF86*) and physical controls. noctalia does the change and shows the OSD
+
+binds {
+    // @Volume
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+
+    // @Microphone
+    XF86AudioMicMute allow-when-locked=true { spawn-sh "noctalia msg mic-mute"; }
+
+    // @Media
+    Mod+P      { spawn-sh "noctalia msg media toggle"; }
+    Mod+Period { spawn-sh "noctalia msg media next"; }
+    Mod+Comma  { spawn-sh "noctalia msg media previous"; }
+    XF86AudioPlay allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
+    XF86AudioNext allow-when-locked=true { spawn-sh "noctalia msg media next"; }
+    XF86AudioPrev allow-when-locked=true { spawn-sh "noctalia msg media previous"; }
+
+    // @Launcher
+    XF86Launch1 { spawn-sh "noctalia msg panel-toggle launcher"; }
+
+    // @Screenshots (niri built in: saved to screenshot-path and copied to the clipboard)
+    Print { screenshot-screen; }
+    // selection UI: drag the area, Space/Enter saves, Ctrl+C only copies, Esc cancels
+    Mod+Shift+S { screenshot; }
+    // swappy replacement: freeze the screen and draw on it
+    Mod+Ctrl+S { spawn-sh "noctalia msg screenshot-annotate"; }
+}

@@ -1,0 +1,51 @@
+// Session environment, cursor, screenshots and noctalia integration
+
+// no csd animations
+prefer-no-csd
+
+// niri screenshots
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png"
+
+// @ENVIRONMENT
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_QPA_PLATFORM "wayland;xcb"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_TYPE "wayland"
+    GDK_BACKEND "wayland,x11"
+    MOZ_ENABLE_WAYLAND "1"
+    SDL_VIDEODRIVER "wayland"
+    _JAVA_AWT_WM_NONREPARENTING "1"
+}
+
+// @CURSOR
+cursor {
+    xcursor-theme "capitaine-cursors"
+    xcursor-size 24
+}
+
+// @STARTUP HOTKEY HELP WINDOW
+hotkey-overlay {
+    skip-at-startup
+}
+
+// @GESTURES
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+blur {
+    passes 2        
+    offset 3.0      
+    noise 0.03      
+    saturation 1.0  
+}
+
+debug {
+    // allows notification actions and window activation from Noctalia
+    honor-xdg-activation-with-invalid-serial
+}

@@ -1,0 +1,12 @@
+// Keyboard and mouse
+input {
+    keyboard {
+        xkb {
+            layout "latam"
+        }
+        numlock
+    }
+
+    focus-follows-mouse
+    workspace-auto-back-and-forth
+}

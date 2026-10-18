@@ -1,0 +1,16 @@
+# noctalia: declarative config. What you change in the Settings window goes to
+# ~/.local/state/noctalia/settings.toml instead, and that file wins over this one.
+# `noctalia config export full` lists every key with its default.
+
+[shell]
+polkit_agent = true
+
+# @Theme: palette generated from the wallpaper
+[theme]
+source = "wallpaper"
+wallpaper_scheme = "m3-content"
+mode = "dark"
+
+# apps recolored with that palette (kitty writes ~/.config/kitty/themes/noctalia.conf)
+[theme.templates]
+builtin_ids = ["kitty"]

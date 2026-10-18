@@ -1,0 +1,18 @@
+    layout {
+        gaps 16 // Gap between windows
+        // the view only scrolls when the focused column does not fit; a lone window sits centered
+        center-focused-column "on-overflow"
+        always-center-single-column
+
+        background-color "transparent" // <- needed for noctalia-shell to set wallpaper
+
+        preset-column-widths {
+            proportion 0.33333
+            proportion 0.5
+            proportion 0.66667
+        }
+        // new windows open at half width: two of them fill the screen (Mod+R cycles from there)
+        default-column-width { proportion 0.5; }
+
+        struts {}
+    }

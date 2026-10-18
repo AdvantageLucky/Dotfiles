@@ -1,0 +1,25 @@
+// ~/.config/niri/config.kdl
+//
+// Structure:
+//   init/      input (keyboard/mouse), outputs, environment and misc
+//   windows/   layout (gaps, columns), rules and animations
+//   keybinds/  WM shortcuts and hardware keys
+//   utils/     autostart (noctalia)
+//   scripts/   helpers called from keybinds
+
+// @Init
+include "./init/inputs.kdl"
+include "./init/outputs.kdl"
+include "./init/misc.kdl"
+
+// @UI
+include "./windows/layout.kdl"
+include "./windows/rules.kdl"
+include "./windows/animations.kdl"
+
+// @Keybinds
+include "./keybinds/keybinds.kdl"
+include "./keybinds/hardware.kdl"
+
+// @Autostart
+include "./utils/autostart.kdl"
