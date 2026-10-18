@@ -48,6 +48,10 @@ sudo pacman -S --needed --noconfirm \
 
 yay -S --needed --noconfirm pinfo timg
 
+# @Browser
+print_step "Installing Zen Browser..."
+yay -S --needed --noconfirm zen-browser-bin
+
 # @Maintenance
 print_step "Enabling pacman cache cleanup and fstrim..."
 sudo pacman -S --needed --noconfirm pacman-contrib
