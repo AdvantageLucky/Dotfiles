@@ -1,6 +1,6 @@
 #!/bin/bash
 # scratchpad.sh <app-id> [command...]
-# niri has no scratchpad: this emulates sway's `scratchpad show` for one floating app.
+# this emulates sway's `scratchpad show` for one floating app.
 #   not running          -> launch it (windows/rules.kdl makes it floating)
 #   focused              -> hide it on the last (empty) workspace
 #   elsewhere / hidden   -> bring it to the current workspace and focus it
