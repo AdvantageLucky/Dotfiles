@@ -11,6 +11,16 @@ source = "wallpaper"
 wallpaper_scheme = "m3-content"
 mode = "dark"
 
-# apps recolored with that palette (kitty writes ~/.config/kitty/themes/noctalia.conf)
-[theme.templates]
-builtin_ids = ["kitty"]
+# kitty noctalia colors file, but as a user template
+# built-in "kitty" one runs  an apply.sh that appends `include themes/noctalia.conf` to kitty.conf
+# but that include already lives in profile.conf (chezmoi), so kitty would load it twice
+[theme.templates.user.kitty]
+input_path = "/usr/share/noctalia/assets/templates/kitty/kitty.conf"
+output_path = "$XDG_CONFIG_HOME/kitty/themes/noctalia.conf"
+post_hook = "pkill -USR1 -x kitty || true"
+
+# nvim palette for mini.base16 (nvim/lua/plugins/ui/theme.lua reads it),
+[theme.templates.user.nvim]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/nvim.lua"
+output_path = "$XDG_STATE_HOME/nvim/noctalia.lua"
+post_hook = "pkill -USR1 -x nvim || true"
