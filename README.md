@@ -5,15 +5,15 @@
   Noctalia-based Niri desktop setup - inspired by wallpaper colors
 </p>
 
-<p align="center">
+<h1 align="center">
   SwayFX setup
-</p>
+</h1>
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/1e1a7a08-b1a7-46b1-a23b-61dee2e9b24e" />
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/97ecada2-d244-4652-b912-d8888746522b" />
 
-<p align="center">
+<h1 align="center">
   Niri + Noctalia setup
-</p>
+</h1>
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/886cd9e3-1324-4cb8-803f-df1255bfc27e" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d05ae848-63ad-4954-ba44-93d0bbbb7c28" />
 
