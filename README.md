@@ -1,7 +1,7 @@
 <h1 align="center">Personal Dotfiles</h1>
 
 <p align="center">
-  Two rices managed by one chezmoi repo, picked per machine:<br>
+  Personal dotfiles for desktop and laptop devices<br>
   <b>SwayFX</b> - minimalist setup inspired by melange.nvim, gruvbox, sh3 ambient<br>
   <b>Niri + Noctalia</b> - "medianoche pixel": everything takes its colors from the wallpaper
 </p>
@@ -232,7 +232,7 @@ They live in `~/.local/share/noctalia/plugins` and are written in Luau.
 | `Super + Shift + s` | Area screenshot |
 | `Super + Ctrl + s` | Freeze the screen and annotate |
 
-## Packages (installed by hand for now)
+## Packages
 
 * **Desktop:** niri, noctalia, xwayland-satellite, capitaine-cursors
 * **Apps:** kitty, zen-browser-bin (AUR), nautilus, feishin, fastfetch
