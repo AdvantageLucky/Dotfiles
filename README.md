@@ -3,7 +3,7 @@
 <p align="center">
   Personal dotfiles for desktop and laptop devices<br>
   <b>SwayFX</b> - minimalist setup inspired by melange.nvim, gruvbox, sh3 ambient<br>
-  <b>Niri + Noctalia</b> - "medianoche pixel": everything takes its colors from the wallpaper
+  <b>Niri + Noctalia</b> - colorscheme from wallpapers
 </p>
 
 <h1 align="center">
