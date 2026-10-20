@@ -16,7 +16,7 @@
   Niri + Noctalia setup
 </h1>
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/886cd9e3-1324-4cb8-803f-df1255bfc27e" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d05ae848-63ad-4954-ba44-93d0bbbb7c28" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/53dd1656-5444-43b3-aabd-b7f63a91a1d8" />
 
 ---
 
