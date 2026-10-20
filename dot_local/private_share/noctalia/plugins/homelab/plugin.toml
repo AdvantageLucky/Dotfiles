@@ -1,0 +1,48 @@
+# Homelab status for noctalia: the services of the tailnet homelab, its server stats
+# (read from Glance) and the tailscale peers. Edit homelab.json to add services.
+#   bar widget   sleepy/homelab:status    "4/4" island, tooltip per service, click = dashboard
+#   panel        sleepy/homelab:dashboard  gauges, service cards, docker, tailnet peers
+#   launcher     /hl                       open a service by name
+#   desktop      sleepy/homelab:card       health card for the desktop
+
+id = "sleepy/homelab"
+name = "Homelab"
+version = "1.0.0"
+plugin_api = 32
+author = "sleepy"
+license = "MIT"
+dependencies = []
+tags = ["bar", "panel", "service", "system"]
+icon = "server-2"
+description = "Tailnet homelab: service health, server stats from Glance and tailscale peers."
+
+# polls everything and publishes it to the plugin state; the other entries only render
+[[service]]
+id = "poller"
+entry = "service.luau"
+
+[[widget]]
+id = "status"
+entry = "widget.luau"
+
+  [widget.actions]
+  middle = "none"
+
+[[panel]]
+id = "dashboard"
+entry = "panel.luau"
+width = 560
+height = 600
+placement = "floating"
+position = "center"
+
+[[desktop_widget]]
+id = "card"
+entry = "desktop.luau"
+
+[[launcher_provider]]
+id = "services"
+entry = "launcher.luau"
+prefix = "hl"
+glyph = "server-2"
+include_in_global_search = true

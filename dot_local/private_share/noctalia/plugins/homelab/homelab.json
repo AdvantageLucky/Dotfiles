@@ -1,0 +1,46 @@
+{
+  "name": "homelab",
+  "os": "Debian",
+  "glance": "https://homelab.tail8dc7f1.ts.net:8080",
+  "refresh_seconds": 30,
+  "services": [
+    {
+      "name": "Navidrome",
+      "url": "https://homelab.tail8dc7f1.ts.net",
+      "glyph": "music",
+      "about": "música"
+    },
+    {
+      "name": "Photoview",
+      "url": "https://homelab.tail8dc7f1.ts.net:8030",
+      "glyph": "photo",
+      "about": "fotos"
+    },
+    {
+      "name": "Syncthing",
+      "url": "https://homelab.tail8dc7f1.ts.net:8020",
+      "glyph": "refresh",
+      "about": "sincronización"
+    },
+    {
+      "name": "Vaultwarden",
+      "url": "https://homelab.tail8dc7f1.ts.net:8010",
+      "glyph": "shield-lock",
+      "about": "contraseñas"
+    },
+    {
+      "name": "MC Server",
+      "url": "tcp://homelab.tail8dc7f1.ts.net:25565",
+      "check": "tcp",
+      "glyph": "brand-minecraft",
+      "about": "minecraft",
+      "container": "minecraft"
+    },
+    {
+      "name": "Glance",
+      "url": "https://homelab.tail8dc7f1.ts.net:8080",
+      "glyph": "layout-dashboard",
+      "about": "dashboard"
+    }
+  ]
+}

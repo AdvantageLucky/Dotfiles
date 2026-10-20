@@ -1,0 +1,89 @@
+# Desktop widget kit for the niri rice: one visual language for every card
+# (solid rounded card, small CAPS label, glyph left, big value right, thin bar).
+#   clock    big time + accent date, no card
+#   system   compact card: cpu, temperature and ram rows
+#   stat     one metric card; setting `stat` = cpu | cpu_temp | gpu_temp | ram | disk
+#   weather  current weather (open-meteo, location from the public IP)
+#   media    now playing card (cover art, progress, controls)
+#   nowplaying (bar)  live spectrum + "title - artist"; click opens the mixer panel
+#   mixer (panel)     volume/mic sliders + big player with the live spectrum
+# Desktop widgets are placed from config.toml [desktop_widgets], type = "sleepy/desk:<id>"
+
+id = "sleepy/desk"
+name = "Desk"
+version = "1.0.0"
+plugin_api = 32
+author = "sleepy"
+license = "MIT"
+dependencies = []
+tags = ["desktop", "system", "media", "weather"]
+icon = "layout-dashboard"
+description = "Desktop cards: clock, system stats, weather and now playing, in one style."
+
+[[desktop_widget]]
+id = "clock"
+entry = "clock.luau"
+
+# MPRIS over busctl, shared through state "media"
+[[service]]
+id = "mpris"
+entry = "mpris.luau"
+
+[[widget]]
+id = "nowplaying"
+entry = "nowplaying.luau"
+
+  # host-level settings: feed onAudioSpectrum() with the PipeWire monitor spectrum
+  [[widget.setting]]
+  key = "audio_spectrum"
+  type = "bool"
+  label_key = "audio_spectrum"
+  default = true
+
+  [[widget.setting]]
+  key = "audio_spectrum_bands"
+  type = "int"
+  label_key = "audio_spectrum_bands"
+  default = 36
+  min = 1
+  max = 64
+
+  [widget.actions]
+  middle = "none"
+
+[[panel]]
+id = "mixer"
+entry = "mixer.luau"
+width = 880
+height = 300
+placement = "floating"
+position = "top_center"
+
+[[desktop_widget]]
+id = "system"
+entry = "system.luau"
+
+[[desktop_widget]]
+id = "stat"
+entry = "stat.luau"
+
+  [[desktop_widget.setting]]
+  key = "stat"
+  type = "select"
+  label_key = "stat"
+  default = "cpu"
+  options = [
+    { value = "cpu", label_key = "cpu" },
+    { value = "cpu_temp", label_key = "cpu_temp" },
+    { value = "gpu_temp", label_key = "gpu_temp" },
+    { value = "ram", label_key = "ram" },
+    { value = "disk", label_key = "disk" },
+  ]
+
+[[desktop_widget]]
+id = "weather"
+entry = "weather.luau"
+
+[[desktop_widget]]
+id = "media"
+entry = "media.luau"
