@@ -1,14 +1,24 @@
 <h1 align="center">Personal Dotfiles</h1>
 
 <p align="center">
-  Minimalist SwayFX setup - inspired by melange.nvim, gruvbox, sh3 ambien, etc
+  Minimalist SwayFX setup - inspired by melange.nvim, gruvbox, sh3 ambient
+  Noctalia-based Niri desktop setup - inspired by wallpaper colors
 </p>
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c86abbc2-3fde-4fc2-a455-3b30422a4899" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/765deeb5-f1c3-4fbe-90dc-39f617c2b228" />
+<p align="center">
+  SwayFX setup
+</p>
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/1e1a7a08-b1a7-46b1-a23b-61dee2e9b24e" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/97ecada2-d244-4652-b912-d8888746522b" />
 
+<p align="center">
+  Niri + Noctalia setup
+</p>
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/886cd9e3-1324-4cb8-803f-df1255bfc27e" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d05ae848-63ad-4954-ba44-93d0bbbb7c28" />
 
 ---
+# SwayFX
 
 ## Components
 
