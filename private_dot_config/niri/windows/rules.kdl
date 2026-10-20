@@ -1,5 +1,5 @@
     window-rule {
-        geometry-corner-radius 20 // Set every window radius to 20
+        geometry-corner-radius 14 // matches the bar islands
         clip-to-geometry true
     }
 
@@ -42,6 +42,13 @@
           xray false
           // blur false
         }
+    }
+
+    // noctalia panels draw rounded, but niri blurs the whole layer rectangle behind them:
+    // clip the blur (and shadow) to the panel's corner radius
+    layer-rule {
+        match namespace="^noctalia-(panel|attached-panel)$"
+        geometry-corner-radius 20
     }
 
     // jukebox: feishin floats, toggled with Mod+M (scripts/scratchpad.sh)

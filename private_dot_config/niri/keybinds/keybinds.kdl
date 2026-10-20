@@ -19,10 +19,12 @@ binds {
     Mod+T hotkey-overlay-title="Terminal: kitty" { spawn "kitty"; }
     Mod+F hotkey-overlay-title="Browser: zen" { spawn "zen-browser"; }
     Mod+D hotkey-overlay-title="Files: nautilus" { spawn "nautilus"; }
-    Mod+C hotkey-overlay-title="Clipboard history" { spawn-sh "noctalia msg panel-toggle launcher /clipboard"; }
+    Mod+C hotkey-overlay-title="Clipboard history" { spawn-sh "noctalia msg panel-toggle clipboard"; }
 
     // noctalia control center
     Mod+X hotkey-overlay-title="Control center" { spawn-sh "noctalia msg panel-toggle control-center"; }
+    // homelab dashboard (own noctalia plugin sleepy/homelab)
+    Mod+Shift+X hotkey-overlay-title="Homelab dashboard" { spawn-sh "noctalia msg panel-toggle sleepy/homelab:dashboard"; }
 
     // toggle feishin as a floating scratchpad 
     Mod+M hotkey-overlay-title="Music: feishin" { spawn-sh "~/.config/niri/scripts/scratchpad.sh feishin"; }

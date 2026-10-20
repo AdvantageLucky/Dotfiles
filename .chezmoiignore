@@ -33,4 +33,5 @@ components-list.md
 # @niri profile only: niri + noctalia
 .config/niri
 .config/noctalia
+.local/share/noctalia
 {{- end }}

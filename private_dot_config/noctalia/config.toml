@@ -1,14 +1,41 @@
 # noctalia: declarative config. What you change in the Settings window goes to
 # ~/.local/state/noctalia/settings.toml instead, and that file wins over this one.
 # `noctalia config export full` lists every key with its default.
+#
+# Rice "medianoche pixel": the bar is a row of floating islands over the wallpaper,
+# everything (bar, panels, niri borders, kitty, nvim) takes the wallpaper palette,
+# one typeface everywhere (the one of kitty)
 
 [shell]
 polkit_agent = true
+font_family = "Maple Mono Normal NF"
+date_format = "%A %d de %B"
+
+    # panels and launcher float over the wallpaper as frosted glass
+    [shell.panel]
+    transparency_mode = "glass"
+    border_color = "outline"
+    launcher_placement = "floating"
+    clipboard_placement = "floating"
+    # attached panels grow out of the bar with concave top corners, which the rounded blur
+    # clip of niri (windows/rules.kdl) cuts oddly: every panel floats like the bar islands
+    control_center_placement = "floating"
+    session_placement = "floating"
+    wallpaper_placement = "floating"
+
+    [shell.launcher]
+    width = 680
+    search_position = "top"
+
+    # rounded screen corners: the desktop reads as one rounded slab
+    [shell.screen_corners]
+    enabled = true
+    size = 18
 
 # @Theme: palette generated from the wallpaper
 [theme]
 source = "wallpaper"
-wallpaper_scheme = "m3-content"
+wallpaper_scheme = "vibrant"
 mode = "dark"
 
 # kitty noctalia colors file, but as a user template
@@ -24,3 +51,211 @@ post_hook = "pkill -USR1 -x kitty || true"
 input_path = "$XDG_CONFIG_HOME/noctalia/templates/nvim.lua"
 output_path = "$XDG_STATE_HOME/nvim/noctalia.lua"
 post_hook = "pkill -USR1 -x nvim || true"
+
+# niri border gradient, shadows and tab colors; same reason as kitty: the built-in
+# "niri" one appends an include to config.kdl, ours is already there (optional include)
+# niri reloads included files by itself, no hook needed
+[theme.templates.user.niri]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/niri.kdl"
+output_path = "$XDG_CONFIG_HOME/niri/noctalia.kdl"
+
+# @Plugins: own plugins live in ~/.local/share/noctalia/plugins (chezmoi), highest precedence
+[plugins]
+enabled = ["sleepy/homelab", "sleepy/desk"]
+
+# @Bar: no strip, only islands (capsules) floating 8px under the screen edge
+[bar.Bar-1]
+position = "top"
+thickness = 34
+margin_edge = 8
+margin_ends = 10
+padding = 6
+background_opacity = 0.0
+compositor_blur = false
+concave_edge_corners = false
+shadow = false
+radius = 17
+font_weight = 600
+widget_spacing = 4
+capsule = true
+capsule_fill = "surface"
+capsule_opacity = 0.88
+capsule_padding = 10
+capsule_thickness = 1.0
+capsule_border_width = 1.0
+start = ["group:home", "window"]
+center = ["group:time", "nowplaying"]
+end = ["homelab", "group:status", "session"]
+
+# islands: widgets that share one capsule
+[[bar.Bar-1.capsule_group]]
+id = "home"
+members = ["launcher", "ws"]
+
+# the clock is the accent island
+[[bar.Bar-1.capsule_group]]
+id = "time"
+members = ["clock", "date"]
+fill = "primary"
+opacity = 0.95
+
+[[bar.Bar-1.capsule_group]]
+id = "status"
+members = ["tray", "network", "volume", "notifications"]
+
+# @Widgets
+# the launcher is search first: a magnifier instead of the app grid icon
+[widget.launcher]
+type = "launcher"
+glyph = "search"
+color = "tertiary"
+
+[widget.ws]
+type = "workspaces"
+focused_color = "primary"
+occupied_color = "tertiary"
+# niri always keeps one empty workspace at the end: a visible dot instead of a blank gap
+empty_color = "outline"
+labels_only_when_occupied = true
+
+[widget.window]
+type = "active_window"
+max_length = 280.0
+color = "on_surface_variant"
+
+[widget.clock]
+type = "clock"
+format = "{:%H:%M}"
+color = "on_primary"
+
+[widget.date]
+type = "clock"
+format = "{:%a %d %b}"
+color = "on_primary"
+
+# own plugin (sleepy/desk): live spectrum + "title - artist", click opens the media panel
+[widget.nowplaying]
+type = "sleepy/desk:nowplaying"
+
+# homelab services over tailscale (own plugin: ~/.local/share/noctalia/plugins/homelab)
+[widget.homelab]
+type = "sleepy/homelab:status"
+
+# status island is icons only: signal-strength glyph (no SSID), volume glyph (no %)
+[widget.network]
+type = "network"
+show_label = false
+
+[widget.volume]
+type = "volume"
+show_label = false
+
+[widget.session]
+type = "session"
+color = "error"
+
+# @Control center: only what this desktop has (no bluetooth adapter, no backlight)
+[control_center]
+hidden_tabs = ["bluetooth", "monitor"]
+sidebar = "compact"
+width = 720
+
+    [control_center.calendar]
+    show_week_numbers = false
+
+    # quick toggles, 2 per row
+    [[control_center.shortcuts]]
+    type = "wifi"
+
+    [[control_center.shortcuts]]
+    type = "notification"
+
+    [[control_center.shortcuts]]
+    type = "mic_mute"
+
+    [[control_center.shortcuts]]
+    type = "caffeine"
+
+    [[control_center.shortcuts]]
+    type = "power_profile"
+
+    [[control_center.shortcuts]]
+    type = "dark_mode"
+
+# @Desktop widgets: cards from the own plugins (sleepy/desk, sleepy/homelab), one style:
+# solid rounded card, CAPS label, glyph left, big value right, thin bar. Visible on empty
+# workspaces; laid out around Monika (left column, right column, nothing in the middle).
+# cx/cy = widget center on the 1920x1080 output. schema_version = 2 keeps noctalia from
+# migrating (copying) this layout into the state file, where it would shadow this one.
+[desktop_widgets]
+enabled = true
+schema_version = 2
+widget_order = ["clock", "homelab", "weather", "system", "media"]
+
+    # right column: big clock, homelab card under it
+    [desktop_widgets.widget.clock]
+    type = "sleepy/desk:clock"
+    output = "HDMI-A-1"
+    cx = 1660.0
+    cy = 175.0
+    box_width = 460.0
+    box_height = 190.0
+    placement_width = 1920.0
+    placement_height = 1080.0
+
+        [desktop_widgets.widget.clock.settings]
+        background = false
+
+    [desktop_widgets.widget.homelab]
+    type = "sleepy/homelab:card"
+    output = "HDMI-A-1"
+    cx = 1722.0
+    cy = 454.0
+    box_width = 300.0
+    box_height = 278.0
+    placement_width = 1920.0
+    placement_height = 1080.0
+
+        [desktop_widgets.widget.homelab.settings]
+        background = false
+
+    # left column: weather, then the compact system card
+    [desktop_widgets.widget.weather]
+    type = "sleepy/desk:weather"
+    output = "HDMI-A-1"
+    cx = 183.0
+    cy = 180.0
+    box_width = 270.0
+    box_height = 200.0
+    placement_width = 1920.0
+    placement_height = 1080.0
+
+        [desktop_widgets.widget.weather.settings]
+        background = false
+
+    [desktop_widgets.widget.system]
+    type = "sleepy/desk:system"
+    output = "HDMI-A-1"
+    cx = 183.0
+    cy = 400.0
+    box_width = 270.0
+    box_height = 196.0
+    placement_width = 1920.0
+    placement_height = 1080.0
+
+        [desktop_widgets.widget.system.settings]
+        background = false
+
+    # bottom left: now playing
+    [desktop_widgets.widget.media]
+    type = "sleepy/desk:media"
+    output = "HDMI-A-1"
+    cx = 288.0
+    cy = 925.0
+    box_width = 480.0
+    box_height = 190.0
+    placement_width = 1920.0
+    placement_height = 1080.0
+
+        [desktop_widgets.widget.media.settings]
+        background = false
