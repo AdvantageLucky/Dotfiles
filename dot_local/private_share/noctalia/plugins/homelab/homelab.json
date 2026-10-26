@@ -29,12 +29,10 @@
       "about": "contraseñas"
     },
     {
-      "name": "MC Server",
-      "url": "tcp://homelab.tail8dc7f1.ts.net:25565",
-      "check": "tcp",
-      "glyph": "brand-minecraft",
-      "about": "minecraft",
-      "container": "minecraft"
+      "name": "Forgejo",
+      "url": "https://homelab.tail8dc7f1.ts.net:8040",
+      "glyph": "brand-git",
+      "about": "git"
     },
     {
       "name": "Glance",
