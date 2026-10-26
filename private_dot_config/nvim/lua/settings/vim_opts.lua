@@ -77,5 +77,15 @@ vim.api.nvim_create_autocmd("FileType", {
 -- undotree
 vim.cmd("packadd nvim.undotree")
 
+-- command menu autocompletion
+vim.o.wildmode = "noselect:lastused,full"
+vim.o.wildoptions = "pum"
+vim.api.nvim_create_autocmd("CmdlineChanged", {
+	pattern = { ":", "/", "?" },
+	callback = function()
+		vim.fn.wildtrigger()
+	end,
+})
+
 -- ui
 require("vim._core.ui2").enable({ enable = true })
