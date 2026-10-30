@@ -83,6 +83,10 @@ vim.o.wildoptions = "pum"
 vim.api.nvim_create_autocmd("CmdlineChanged", {
 	pattern = { ":", "/", "?" },
 	callback = function()
+		-- no popup while typing a w*/q* command name (:w, :q, :wq, :qa...)
+		if vim.fn.getcmdtype() == ":" and vim.fn.getcmdline():match("^%s*[wq]%a*!?$") then
+			return
+		end
 		vim.fn.wildtrigger()
 	end,
 })
