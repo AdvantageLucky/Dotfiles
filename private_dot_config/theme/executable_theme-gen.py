@@ -132,9 +132,10 @@ def render(mode, m, s, night):
         f"  $urgent-bg-color     {m['error']}",
         f"  $accent-color        {m['accent']}",
         f"  $overlay-bg-color    {m['selection']}",
-        f"  $radius              {s['radius']}",
+        f"  $border-color        {m['border']}",
+        f"  $radius              {s['window_radius']}",
         "}",
-        f"corner_radius {s['radius']}",
+        f"corner_radius {s['window_radius']}",
         f"shadow_color {hex8('#000000', 0.40)}",
         # weaker shadow on windows without focus, and inactive windows are dimmed towards the
         # background color of the mode (in day mode a fade to paper, not to black)
@@ -161,7 +162,8 @@ def render(mode, m, s, night):
         f"# {hdr}",
         f'font_family      family="{s["font_mono"]}"',
         f"font_size        {s['kitty_size']}",
-        f"window_padding_width {s['kitty_padding']}",
+        f"window_padding_width {s['kitty_padding']} {s['kitty_padding_x']}",  # top/bottom, left/right
+        "placement_strategy   top-left",
         f"background_opacity {s['kitty_opacity']}",
         f"background            {m['bg']}",
         f"foreground            {m['fg']}",

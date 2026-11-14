@@ -1,179 +1,185 @@
 {
+  // Vertical bar on the left, flush with the screen edge (1366x768: width is cheaper than height).
+  // Two blocks: top (user, clock, notifications, tray) and bottom (music, status and power), with
+  // the workspaces in the middle. Every module is a small square tile. Style: style.css
+  "name": "left",
+  "position": "left",
+  "layer": "top",
+  "width": 34,
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "margin-left": 0,
+  "margin-right": 0,
   "spacing": 0,
-    "height": 0,
-    "margin-top": 0,
-    "margin-bottom": 0,
-    "margin-right": 0,
-    "margin-left": 0,
-    "position": "top",
-    "layer": "top",
 
-    "modules-left": [
-      "custom/clock",
-      "sway/workspaces",
-      "sway/mode",
-      "battery#group",
-      "backlight#group"
-    ],
+  // top: user, clock, notifications + idle inhibitor, tray. center: workspaces.
+  // bottom: music, updates, one quick tile (volume/brightness rings, bluetooth, wifi), battery, power.
+  "modules-left": ["image#user", "clock", "group/notif", "tray"],
+  "modules-center": ["sway/workspaces"],
+  "modules-right": [
+    "mpris",
+    "custom/updates",
+    "group/quick",
+    "battery",
+    "custom/power"
+  ],
 
-    "modules-center": [
-      "mpris"
-    ],
+  // @Top
+  // the picture of the fastfetch logo; the path is resolved by the shell so it follows $HOME
+  "image#user": {
+    "exec": "echo ~/.config/fastfetch/love.jpg",
+    "size": 24,
+    "interval": 3600,
+    "on-click": "launch kitty --hold fish -c fastfetch"
+  },
 
-    "modules-right": [
-      "tray",
-      "custom/updates",
-      "group/notif",
-      "bluetooth#group",
-      "pulseaudio#group",
-      "network"
-    ],
-
-    /*left modules */
-    "custom/clock": {
-      "exec": "~/.config/waybar/scripts/clock-status.sh",
-      "return-type": "json",
-      "interval": 30,
-      "tooltip": true
-    },
-
-    "sway/workspaces": {
-      "disable-scroll": true,
-      "all-outputs": false,
-      "tooltip": false
-    },
-
-    /* battery: contextual. Hidden (empty format) when plugged or full. */
-    "battery#group": {
-      "format": "{icon} {capacity}%",
-      "format-charging": "󰂄 {capacity}%",
-      "format-plugged": "",
-      "format-full": "",
-      "format-alt": "󱧥 {time}",
-      "format-icons": ["󱊡", "󱊢", "󱊣"],
-      "states": {
-        "warning": 30,
-        "critical": 15
-      },
-      "tooltip": false
-    },
-
-    "backlight#group": {
-      "device": "intel_backlight",
-      "format": "{icon} {percent}%",
-      "format-icons": ["󰃞", "󰃟", "󰃠"],
-      "on-scroll-up": "brightnessctl set 1%+",
-      "on-scroll-down": "brightnessctl set 1%-",
-      "min-length": 6,
-      "tooltip": false
-    },
-    /* --- */
-
-    /* middle modules */
-    "mpris": {
-      "format": "{status_icon}  {dynamic}",
-      "dynamic-order": ["artist", "title"],
-      "dynamic-separator": " ∕ ",
-      "dynamic-len": 55,
-      "status-icons": {
-        "playing": "󰐊",
-        "paused": "󰏤",
-        "stopped": "󰓛"
-      },
-      "tooltip-format": "{player} · {album}",
-      "on-click-right": "swaymsg '[app_id=\"jukebox\"] scratchpad show' || launch kitty --app-id jukebox -o window_padding_width=0 rmpc",
-      "on-scroll-up": "playerctl next",
-      "on-scroll-down": "playerctl previous"
-    },
-    /* --- */
-
-    /* right modules */
-    "tray": {
-      "tooltip": false,
-      "spacing": 10
-    },
-
-    /* updates: contextual. The script prints an empty text when nothing is pending. */
-    "custom/updates": {
-      "format": "{}",
-      "return-type": "json",
-      "exec": "~/.config/waybar/scripts/updates-status.sh",
-      "interval": 1800,
-      "signal": 9,
-      "on-click": "launch ~/.config/sway/scripts/update.sh"
-    },
-
-    /* one chip, two buttons: notifications | idle inhibitor. The group is the island (style.css
-       #notif); the buttons inside only change color / inner background, so hover and state never
-       split the chip. */
-    "group/notif": {
-      "orientation": "horizontal",
-      "modules": ["custom/notification", "idle_inhibitor"]
-    },
-
-    /* swaync: icon follows the unread / do-not-disturb state; event driven, no polling */
-    "custom/notification": {
-      "tooltip": false,
-      "format": "{icon}",
-      "format-icons": {
-        "notification": "󱅫",
-        "none": "󰂜",
-        "dnd-notification": "󰂛",
-        "dnd-none": "󰂛",
-        "inhibited-notification": "󰂛",
-        "inhibited-none": "󰂛",
-        "dnd-inhibited-notification": "󰂛",
-        "dnd-inhibited-none": "󰂛"
-      },
-      "return-type": "json",
-      "exec-if": "which swaync-client",
-      "exec": "swaync-client -swb",
-      "on-click": "swaync-client -t -sw",
-      "on-click-right": "swaync-client -d -sw",
-      "escape": true
-    },
-
-    "idle_inhibitor": {
-      "format": "{icon}",
-      "format-icons": {
-        "activated": "󰅶",
-        "deactivated": "󰾪"
-      },
-      "tooltip-format-activated": "Inhibidor de reposo: activo\nLa pantalla no se bloqueará",
-      "tooltip-format-deactivated": "Inhibidor de reposo: inactivo\nBloqueo a los 3 min de inactividad"
-    },
-
-    /* bluetooth: contextual. Hidden when off or disabled. */
-    "bluetooth#group": {
-      "format": "󰂯",
-      "format-off": "",
-      "format-disabled": "",
-      "format-connected": "󰂯 {status} {device_battery_percentage}",
-      "format-connected-battery": "{icon} {device_battery_percentage}%",
-      "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
-      "tooltip": false,
-      "on-click": "launch blueman-manager"
-
-    },
-
-    "pulseaudio#group": {
-      "format": "{icon} {volume}% {format_source}",
-      "format-muted": "󰖁 {format_source}",
-      "format-source": "󰍬",
-      "format-source-muted": "󰍭",
-      "format-icons": ["󰕿", "󰖀", "󰕾"],
-      "tooltip": false,
-      "on-click": "launch pavucontrol",
-      "nospacing": 1,
-      "scroll-step": 5,
-      "max-volume": 100
-    },
-
-    "network": {
-      "format-wifi": "󰖩 {signalStrength}%",
-      "format-ethernet": "󰈀 Eth",
-      "format-disconnected": "󰤮 Sin red",
-      "tooltip": false,
-      "on-click": "launch nm-connection-editor"
+  "clock": {
+    "format": "{:%H\n%M}",
+    "justify": "center",
+    "align": 0.5,
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "today": "<b><u>{}</u></b>"
+      }
     }
+  },
+
+  // one chip, two buttons: notifications and idle inhibitor
+  "group/notif": {
+    "orientation": "vertical",
+    "modules": ["custom/notification", "idle_inhibitor"]
+  },
+
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂛",
+      "dnd-none": "󰂛",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰂛",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰅶",
+      "deactivated": "󰾪"
+    },
+    "tooltip-format-activated": "Inhibidor de reposo: activo\nLa pantalla no se bloqueará",
+    "tooltip-format-deactivated": "Inhibidor de reposo: inactivo\nBloqueo a los 3 min de inactividad"
+  },
+
+  // volume (outer ring) and brightness (inner ring) as one picture, drawn by scripts/rings.sh (and rings-render.py).
+  // Redrawn by signal 10 (sent by sway/scripts/volume.sh and brightness.sh) and every minute.
+  // Scroll changes the volume, click opens the mixer, right click mutes, middle click mutes the mic.
+  "image#rings": {
+    "exec": "~/.config/waybar/scripts/rings.sh",
+    "size": 24,
+    "interval": 60,
+    "signal": 10,
+    "on-click": "launch pavucontrol",
+    "on-click-right": "pamixer --toggle-mute; pkill -RTMIN+10 -x waybar",
+    "on-click-middle": "pamixer --default-source --toggle-mute",
+    "on-scroll-up": "pamixer --increase 5; pkill -RTMIN+10 -x waybar",
+    "on-scroll-down": "pamixer --decrease 5; pkill -RTMIN+10 -x waybar"
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 6
+  },
+
+  // the quick tile: the rings (outer = volume, inner = brightness), bluetooth and wifi in one square
+  "group/quick": {
+    "orientation": "vertical",
+    "modules": ["image#rings", "bluetooth", "network"]
+  },
+
+  // @Center
+  // workspaces: the numbers, stacked; the focused one is the filled block (see style.css)
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": false,
+    "tooltip": false
+  },
+
+  // @Bottom
+  // now playing: icon only, the text is in the tooltip
+  "mpris": {
+    "format": "{status_icon}",
+    "status-icons": {
+      "playing": "󰐊",
+      "paused": "󰏤",
+      "stopped": "󰓛"
+    },
+    "tooltip-format": "{artist} ∕ {title}\n{player} · {album}",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "swaymsg '[con_mark=\"jukebox\"] scratchpad show'",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous"
+  },
+
+  // contextual: the script prints an empty text when nothing is pending
+  "custom/updates": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/updates-status.sh",
+    "interval": 1800,
+    "signal": 9,
+    "on-click": "launch ~/.config/sway/scripts/update.sh"
+  },
+
+  // contextual: hidden when off or disabled
+  "bluetooth": {
+    "format": "󰂯",
+    "format-off": "",
+    "format-disabled": "",
+    "format-connected": "󰂱",
+    "tooltip-format-connected": "{device_alias}",
+    "on-click": "launch blueman-manager"
+  },
+
+  "network": {
+    "format-wifi": "{icon}",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} · {signalStrength}%",
+    "tooltip-format-ethernet": "{ifname}",
+    "on-click": "launch nm-connection-editor"
+  },
+
+  "battery": {
+    "format": "{icon}\n{capacity}",
+    "format-charging": "󰂄\n{capacity}",
+    "format-plugged": "󰂄\n{capacity}",
+    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"],
+    "justify": "center",
+    "align": 0.5,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "tooltip-format": "{time}"
+  },
+
+  "custom/power": {
+    "format": "󰐥",
+    "tooltip": false,
+    "on-click": "bash ~/.config/sway/scripts/wlogout.sh"
+  }
 }

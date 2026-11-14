@@ -3,11 +3,13 @@
 [shared]
 font_mono      = "GeistMono Nerd Font Mono"   # terminals
 font_ui        = "GeistMono Nerd Font Propo"  # bar, launcher, notifications
-radius         = 10                           # px, every rounded surface
-gaps_inner     = 8                            # px, between windows (sway)
-gaps_outer     = 16                           # px, between windows and the screen edge (sway)
+radius         = 10                           # px, every rounded surface (rofi, notifications, logout)
+window_radius  = 10                           # px, corners of the windows (sway)
+gaps_inner     = 6                            # px, between windows (sway)
+gaps_outer     = 10                           # px, between windows and the screen edge (sway)
 kitty_size     = 10.5
-kitty_padding  = 4
+kitty_padding  = 4                              # pt, top and bottom
+kitty_padding_x = 6                             # pt, left and right
 kitty_opacity  = 0.93
 scrim_opacity  = 0.85                         # dimmed full screen of rofi / wlogout (text sits right on it)
 icons_src      = "~/.config/wlogout/icons"    # one-color silhouettes; their alpha is used as a mask
