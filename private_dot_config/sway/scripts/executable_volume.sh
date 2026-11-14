@@ -22,6 +22,9 @@ case $1 in
         ;;
 esac
 
+# redraw the volume / brightness rings of the waybar (signal 10)
+pkill -RTMIN+10 -x waybar
+
 # Get volume percentage
 VOL=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po "\d+(?=%)" | head -1)
 MUTE_STATUS=$(pactl get-sink-mute @DEFAULT_SINK@)

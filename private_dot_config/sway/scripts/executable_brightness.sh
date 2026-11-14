@@ -11,6 +11,9 @@ case $1 in
         ;;
 esac
 
+# redraw the volume / brightness rings of the waybar (signal 10)
+pkill -RTMIN+10 -x waybar
+
 # Get current percentage directly
 VAL=$(brightnessctl -m | cut -d, -f4 | tr -d '%')
 
